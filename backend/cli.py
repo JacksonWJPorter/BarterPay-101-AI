@@ -39,7 +39,6 @@ def main():
         if 'error' in response:
             print(f"Error: {response['error']}")
             if 'error' in response and response['error'].startswith('Server returned status code'):
-                # Handle specific error if the server response is not 200 OK
                 break
         else:
             print(f"Bot: {response['response']}")

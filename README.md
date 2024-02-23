@@ -1,2 +1,2 @@
-# BarterPay101AI
-Chatbot fore BarterPay
+# BarterPay 101 AI
+Chatbot for BarterPay.

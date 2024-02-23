@@ -21,7 +21,6 @@ else:
 app = Flask(__name__)
 CORS(app) # CORS(app, origins=["http://example.com", "https://anotherdomain.com"]) for restricting which origins can make requests
 
-# Init client
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 # Create new assistant or load existing
@@ -30,9 +29,9 @@ assistant_id = functions.create_assistant(client)
 # Start conversation thread
 @app.route('/start', methods=['GET'])
 def start_conversation():
-  print("Starting a new conversation...")  # Debugging line
+  print("Starting a new conversation...") 
   thread = client.beta.threads.create()
-  print(f"New thread created with ID: {thread.id}")  # Debugging line
+  print(f"New thread created with ID: {thread.id}") 
   return jsonify({"thread_id": thread.id})
 
 # Generate response
@@ -43,11 +42,11 @@ def chat():
   user_input = data.get('message', '')
 
   if not thread_id:
-    print("Error: Missing thread_id")  # Debugging line
+    print("Error: Missing thread_id") 
     return jsonify({"error": "Missing thread_id"}), 400
 
   print(f"Received message: {user_input} for thread ID: {thread_id}"
-        )  # Debugging line
+        )  
 
   # Add the user's message to the thread
   client.beta.threads.messages.create(thread_id=thread_id,
@@ -71,7 +70,7 @@ def chat():
   messages = client.beta.threads.messages.list(thread_id=thread_id)
   response = messages.data[0].content[0].text.value
 
-  print(f"Assistant response: {response}")  # Debugging line
+  print(f"Assistant response: {response}") 
   return jsonify({"response": response})
 
 # Run server

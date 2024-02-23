@@ -9,7 +9,6 @@ function startNewConversation() {
     .then((response) => response.json())
     .then((data) => {
       currentThreadId = data.thread_id;
-      // Enable chat input and send button here if necessary
     })
     .catch((error) => {
       console.error('Error starting a new conversation:', error);
@@ -60,7 +59,6 @@ function addMessageToChatbox(sender, message) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('chat-message', sender.toLowerCase());
   
-    // Use the marked function imported at the top
     const messageHtml = marked(message);
     const safeHtml = DOMPurify.sanitize(messageHtml);
     messageElement.innerHTML = safeHtml;
