@@ -57,13 +57,20 @@ function sendMessage() {
 function addMessageToChatbox(sender, message) {
     const chatBox = document.getElementById('chat-box');
     const messageElement = document.createElement('div');
-    messageElement.classList.add('chat-message', sender.toLowerCase());
+    const baseClasses =  'block mb-2 text-sm p-2 rounded-lg fit-content'; 
+    const userClasses = 'bg-pink-500 text-white self-end max-w-[275px] float-right';
+    const botClasses = 'bg-gray-100 text-black self-start max-w-[325px] float-left'; 
+    const cleanedMessage = message.replace(/\[\d+\^source\]/g, '');
+    const clearDiv = document.createElement('div');
+
+    clearDiv.className = 'clear-both';
+    messageElement.className = `${baseClasses} ${sender.toLowerCase() === 'user' ? userClasses : botClasses}`;
+    messageElement.innerHTML = DOMPurify.sanitize(marked.parse(cleanedMessage)); // Parse the Markdown and sanitize it
   
-    const messageHtml = marked(message);
-    const safeHtml = DOMPurify.sanitize(messageHtml);
-    messageElement.innerHTML = safeHtml;
-  
-    chatBox.appendChild(messageElement);
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
+    chatBox.appendChild(messageElement); // Append the element with parsed HTML
+    chatBox.appendChild(clearDiv); // Clear the floats
+    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom of the chat box
+}
+
+
   

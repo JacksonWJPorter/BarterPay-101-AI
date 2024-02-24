@@ -1,4 +1,7 @@
+.gitignore
 poetry.lock
 pyproject.toml
 knowledge.docx
 bpCPA.mp4
+.DS_Store
+__pycache__/

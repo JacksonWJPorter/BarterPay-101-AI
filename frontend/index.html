@@ -1,27 +1,37 @@
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Chat Interface</title>
+    <link rel="stylesheet" href="dist/styles.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="chat-container">
-        <header class="chat-header">
-            <img src="barterpay_inc_logo.jpeg" alt="Support Assistant Avatar" class="chat-avatar">
-            <h2>BarterPay AI</h2>
-            <p>I can help with info on our company and services!</p>
-        </header>
-        <div id="chat-box" class="chat-box">
-            <!-- Messages are dynamically added here -->
+<body class="bg-gray-200 h-screen flex items-center justify-center p-4">
+    <div class="flex flex-col h-[80vh] w-[55vh] mx-auto bg-white rounded-xl shadow">
+        <div class="p-4 bg-black border-b rounded-t-xl">
+            <div class="flex items-center">
+                <img style="padding-left: 10px" src="barterpayLOGO.png" alt="BarterPay Logo" class="w-17 h-12 mr-4">
+                <div style="padding-left: 13px">
+                    <h2 class="font-semibold text-xl text-white">BarterPay ai</h2>
+                    <p class="text-white">I can help with all things BarterPay!</p>
+                </div>
+            </div>
         </div>
-        <footer class="chat-footer">
-            <textarea id="chat-input" placeholder="Type a message..." autofocus></textarea>
-            <button id="send-btn">Send</button>
-        </footer>
+        <div id="chat-box" class="p-4 flex-1 overflow-y-auto">
+            <!-- Messages will be added here dynamically -->
+        </div>
+        <div class="px-4 py-3 h-[8vh] bg-gray-100 flex rounded-b-xl">
+            <textarea id="chat-input" class="flex-1 h-[5vh] border-gray-300 rounded-lg p-2 mr-4 text-gray-700 focus:outline-none focus:ring" placeholder="Message..." autofocus></textarea>
+            <button id="send-btn" style="background-color: #000000" class="h-[5vh] text-white font-bold py-2 px-6 rounded-lg">
+                Send
+            </button>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
-    <script src="chat.js"></script> 
+    <script src="chat.js"></script>
 </body>
 </html>
+
